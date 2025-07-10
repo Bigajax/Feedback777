@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react';
+import { supabase } from '../api/supabaseClient';
 import QuestionCard from '../components/QuestionCard';
 import RadioGroup from '../components/RadioGroup';
 import CheckboxGroup from '../components/CheckboxGroup';
@@ -75,37 +76,35 @@ const FormPage: React.FC = () => {
   };
 
   const submitFeedback = async () => {
-    setSubmissionStatus('loading');
-    try {
-      const payload = {
-        q1_purpose_understanding: formData.purpose,
-        q2_voice_reflection_help: formData.reflectionState,
-        q3_voice_quality_clarity: formData.voiceQuality,
-        q4_emotional_understanding: formData.emotionalUnderstanding,
-        q5_responses_useful_reflection: formData.reflectionUtility,
-        q6_design_aesthetics: formData.aesthetics,
-        q7_ease_of_use: formData.usability,
-        q8_emotional_change: formData.emotionalChange,
-        q8_emotional_change_other: formData.otherEmotion,
-        q9_recommendation_nps: formData.recommendation,
-        q10_overall_experience_short: formData.experience,
-      };
+  setSubmissionStatus('loading');
+  try {
+    const payload = {
+      purpose_understanding: formData.purpose,
+      voice_reflection_help: formData.reflectionState,
+      voice_quality_clarity: formData.voiceQuality,
+      emotional_understanding: formData.emotionalUnderstanding,
+      responses_useful_reflection: formData.reflectionUtility,
+      design_aesthetics: formData.aesthetics,
+      ease_of_use: formData.usability,
+      emotional_change: formData.emotionalChange,
+      emotional_change_other: formData.otherEmotion,
+      recommendation_nps: formData.recommendation,
+      overall_experience_short: formData.experience,
+    };
 
-      const response = await fetch('http://127.0.0.1:5001/eco6-11d1c/us-central1/submitFeedback', {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify(payload),
-      });
+    const { error } = await supabase
+      .from('feedbacks')
+      .insert([payload]);
 
-      if (!response.ok) throw new Error((await response.json()).message || 'Failed to submit feedback.');
+    if (error) throw error;
 
-      await response.json();
-      setSubmissionStatus('success');
-    } catch (error: any) {
-      console.error('Error submitting feedback:', error.message);
-      setSubmissionStatus('error');
-    }
-  };
+    setSubmissionStatus('success');
+  } catch (error: any) {
+    console.error('Error submitting feedback:', error.message);
+    setSubmissionStatus('error');
+  }
+};
+
 
   const handleNext = () => {
     if (currentStep === questions.length - 2 && isCurrentQuestionAnswered()) {
