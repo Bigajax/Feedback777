@@ -38,7 +38,7 @@ const FormPage: React.FC = () => {
     if (currentStep === 0) setSubmissionStatus('idle');
   }, [currentStep]);
 
-  const orbBaseColor = '#7A9EBF';
+  const orbBaseColor = '#DCE8FF';
 
   const updateFormData = (field: string, value: any) => {
     setFormData(prev => ({ ...prev, [field]: value }));
