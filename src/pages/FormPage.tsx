@@ -361,10 +361,10 @@ const FormPage: React.FC = () => {
   const currentQuestion = questions[currentStep];
 
   return (
-    <div className="min-h-screen bg-[#F8F6FA] flex flex-col p-4 relative">
+    <div className="min-h-screen bg-white flex flex-col p-4 relative">
       <div className="absolute inset-0">
-        <div className="absolute top-1/4 left-1/4 w-[40vw] h-[40vw] md:w-[20vw] md:h-[20vw] rounded-full bg-[#E0BBE4] opacity-20 blur-[100px] animate-pulse"></div>
-        <div className="absolute bottom-1/3 right-1/3 w-[45vw] h-[45vw] md:w-[25vw] md:h-[25vw] rounded-full bg-[#957DAD] opacity-20 blur-[120px] animate-pulse delay-1000"></div>
+        <div className="absolute top-1/4 left-1/4 w-[40vw] h-[40vw] md:w-[20vw] md:h-[20vw] rounded-full bg-white/60 blur-[100px] animate-pulse"></div>
+        <div className="absolute bottom-1/3 right-1/3 w-[45vw] h-[45vw] md:w-[25vw] md:h-[25vw] rounded-full bg-sky-100/60 blur-[120px] animate-pulse delay-1000"></div>
       </div>
       <div className="z-10 flex flex-col flex-grow items-center justify-center pt-8 pb-4">
         {currentStep === 0 && (
