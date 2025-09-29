@@ -153,12 +153,20 @@ const FormPage: React.FC = () => {
           <h1 className="text-3xl font-bold mb-8">ECO</h1>
           <p className="mb-2 text-gray-700">Obrigado por usar a Eco.</p>
           <p className="mb-8 text-gray-700">Sua opinião nos ajuda a melhorar a experiência.</p>
-          <button
-            onClick={handleNext}
-            className="px-8 py-4 rounded-xl bg-white text-gray-800 font-medium text-lg transition-all hover:scale-105 duration-300 shadow-sm hover:shadow-md shadow-gray-300/50 hover:shadow-gray-400/50 w-full"
-          >
-            Iniciar Feedback
-          </button>
+          <div className="flex flex-col gap-3 sm:flex-row sm:justify-center">
+            <button
+              onClick={() => (window.location.href = 'https://ecofrontend888.vercel.app/')}
+              className="px-8 py-4 rounded-xl bg-gray-100 text-gray-800 font-medium text-lg transition-all hover:scale-105 duration-300 shadow-sm hover:shadow-md shadow-gray-300/50 hover:shadow-gray-400/50 w-full sm:w-auto"
+            >
+              Voltar ao chat
+            </button>
+            <button
+              onClick={handleNext}
+              className="px-8 py-4 rounded-xl bg-white text-gray-800 font-medium text-lg transition-all hover:scale-105 duration-300 shadow-sm hover:shadow-md shadow-gray-300/50 hover:shadow-gray-400/50 w-full sm:w-auto"
+            >
+              Iniciar Feedback
+            </button>
+          </div>
         </div>
       )
     },
@@ -347,12 +355,20 @@ const FormPage: React.FC = () => {
           <p className="mb-8 text-gray-700">
             Suas respostas nos ajudarão a melhorar a experiência da Eco.
           </p>
-          <button
-            onClick={handleNext}
-            className="px-8 py-4 rounded-xl bg-white text-gray-800 font-medium text-lg transition-all hover:scale-105 duration-300 shadow-sm hover:shadow-md shadow-gray-300/50 hover:shadow-gray-400/50"
-          >
-            Voltar ao início
-          </button>
+          <div className="flex flex-col gap-3 sm:flex-row sm:justify-center">
+            <button
+              onClick={() => (window.location.href = 'https://ecofrontend888.vercel.app/')}
+              className="px-8 py-4 rounded-xl bg-gray-100 text-gray-800 font-medium text-lg transition-all hover:scale-105 duration-300 shadow-sm hover:shadow-md shadow-gray-300/50 hover:shadow-gray-400/50 w-full sm:w-auto"
+            >
+              Voltar ao chat
+            </button>
+            <button
+              onClick={handleNext}
+              className="px-8 py-4 rounded-xl bg-white text-gray-800 font-medium text-lg transition-all hover:scale-105 duration-300 shadow-sm hover:shadow-md shadow-gray-300/50 hover:shadow-gray-400/50 w-full sm:w-auto"
+            >
+              Voltar ao início
+            </button>
+          </div>
         </div>
       )
     }
