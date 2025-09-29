@@ -17,7 +17,7 @@ const TextInput: React.FC<TextInputProps> = ({
       placeholder={placeholder}
       value={value}
       onChange={(e) => onChange(e.target.value)}
-      className="w-full px-4 py-3 rounded-lg border border-gray-200 focus:border-blue-500 focus:outline-none transition-colors"
+      className="w-full px-4 py-3 rounded-lg bg-white/60 border border-white/40 backdrop-blur text-gray-800 placeholder-gray-600 focus:outline-none focus:ring-2 focus:ring-white/60 focus:border-transparent focus:shadow-lg transition"
     />
   );
 };
