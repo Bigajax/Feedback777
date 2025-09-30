@@ -313,10 +313,10 @@ const FormPage: React.FC = () => {
           {Array.from({ length: 11 }).map((_, i) => (
             <button
               key={i}
-              className={`w-10 h-10 rounded-full border transition-all duration-300 ${
+              className={`w-10 h-10 rounded-full border backdrop-blur-sm transition-all duration-300 ${
                 formData.recommendation === i
-                  ? 'border-blue-500 bg-blue-500 text-white'
-                  : 'border-gray-300 hover:border-gray-400 text-gray-700'
+                  ? 'border-white/60 bg-white/30 text-gray-900 shadow-lg shadow-blue-500/20'
+                  : 'border-white/20 bg-white/10 text-gray-700 hover:border-white/40 hover:bg-white/20'
               }`}
               onClick={() => updateFormData('recommendation', i)}
             >
