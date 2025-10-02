@@ -6,6 +6,7 @@ import CheckboxGroup from '../components/CheckboxGroup';
 import TextInput from '../components/TextInput';
 import Button from '../components/Button';
 import ProgressBar from '../components/ProgressBar';
+import EcoBubbleOneEye from '../components/EcoBubbleOneEye';
 
 const FormPage: React.FC = () => {
   const [currentStep, setCurrentStep] = useState(0);
@@ -23,22 +24,13 @@ const FormPage: React.FC = () => {
     otherEmotion: ''
   });
 
-  const [animateOrb, setAnimateOrb] = useState(false);
   const [showErrorMessage, setShowErrorMessage] = useState(false);
   const [submissionStatus, setSubmissionStatus] = useState<'idle' | 'loading' | 'success' | 'error'>('idle');
 
   useEffect(() => {
-    if (currentStep === 0) {
-      const timer = setTimeout(() => setAnimateOrb(true), 300);
-      return () => clearTimeout(timer);
-    } else {
-      setAnimateOrb(false);
-    }
     setShowErrorMessage(false);
     if (currentStep === 0) setSubmissionStatus('idle');
   }, [currentStep]);
-
-  const orbBaseColor = '#DCE8FF';
 
   const updateFormData = (field: string, value: any) => {
     setFormData(prev => ({ ...prev, [field]: value }));
@@ -384,38 +376,12 @@ const FormPage: React.FC = () => {
       </div>
       <div className="z-10 flex flex-col flex-grow items-center justify-center pt-8 pb-4">
         {currentStep === 0 && (
-          <div
-            className={`relative mb-8 transition-all duration-1000 ${
-              animateOrb ? 'scale-100 opacity-100' : 'scale-90 opacity-0'
-            }`}
-            style={{ width: '192px', height: '192px' }}
-          >
-            <div className="glass-bubble-container relative w-full h-full floating">
-              <div
-                className="absolute inset-0 rounded-full"
-                style={{
-                  background: `radial-gradient(circle at 30% 30%, white 0%, ${orbBaseColor}10 30%, ${orbBaseColor}20 60%, ${orbBaseColor}30 100%)`,
-                  boxShadow: `0 8px 32px 0 rgba(31, 38, 135, 0.2), inset 0 -10px 20px 0 ${orbBaseColor}30, inset 0 10px 20px 0 rgba(255, 255, 255, 0.7)`,
-                  backdropFilter: 'blur(4px)',
-                  border: '1px solid rgba(255, 255, 255, 0.18)',
-                }}
-              />
-              <div
-                className="absolute bottom-0 left-1/2 w-3/4 h-4 rounded-full transform -translate-x-1/2 translate-y-10 opacity-40"
-                style={{
-                  background: `radial-gradient(ellipse at center, ${orbBaseColor}80 0%, transparent 70%)`,
-                  filter: 'blur(4px)',
-                }}
-              />
-              <div
-                className="absolute inset-0 rounded-full"
-                style={{
-                  border: `1px solid ${orbBaseColor}30`,
-                  animation: 'pulse 2s infinite',
-                }}
-              />
-            </div>
-          </div>
+          <EcoBubbleOneEye
+            size={192}
+            state="idle"
+            variant="eco"
+            className="mb-8"
+          />
         )}
         {currentStep > 0 && currentStep < questions.length - 1 && (
           <div className="mb-4 max-w-md mx-auto w-full">

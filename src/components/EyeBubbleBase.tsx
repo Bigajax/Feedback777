@@ -30,6 +30,8 @@ export interface EyeBubbleBaseProps
   extends React.HTMLAttributes<HTMLDivElement> {
   token: EyeBubbleToken;
   size?: number;
+  state?: string;
+  variant?: string;
   children?: React.ReactNode;
 }
 
@@ -40,6 +42,8 @@ const EyeBubbleBase: React.FC<EyeBubbleBaseProps> = ({
   size = 240,
   className,
   style,
+  state,
+  variant,
   children,
   ...rest
 }) => {
@@ -61,7 +65,13 @@ const EyeBubbleBase: React.FC<EyeBubbleBaseProps> = ({
   };
 
   return (
-    <div className={containerClassName} style={mergedStyle} {...rest}>
+    <div
+      className={containerClassName}
+      style={mergedStyle}
+      data-state={state}
+      data-variant={variant}
+      {...rest}
+    >
       <motion.svg
         width={size}
         height={size}
